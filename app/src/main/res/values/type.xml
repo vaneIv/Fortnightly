@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Typography -->
+    <style name="TextAppearance.Fortnightly.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/merriweather_black_italic</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/libre_franklin_light</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/merriweather_black_italic</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/libre_franklin</item>
+        <item name="android:fontFamily">@font/libre_franklin</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/libre_franklin</item>
+        <item name="android:fontFamily">@font/libre_franklin</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/merriweather_bold_italic</item>
+        <item name="android:fontFamily">@font/merriweather_bold_italic</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/libre_franklin_medium</item>
+        <item name="android:fontFamily">@font/libre_franklin_medium</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/libre_franklin</item>
+        <item name="android:fontFamily">@font/libre_franklin</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/merriweather</item>
+        <item name="android:fontFamily">@font/merriweather</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/libre_franklin</item>
+        <item name="android:fontFamily">@font/libre_franklin</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Caption." parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/merriweather_regular_italic</item>
+        <item name="android:fontFamily">@font/merriweather_regular_italic</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/libre_franklin_bold</item>
+        <item name="android:fontFamily">@font/libre_franklin_bold</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/merriweather_black_italic</item>
+        <item name="android:fontFamily">@font/merriweather_black_italic</item>
+    </style>
+
+    <style name="TextAppearance.Fortnightly.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/libre_franklin_bold</item>
+    </style>
+
+    <!-- Appbar Headline TextAppearance -->
+    <style name="TextAppearance.Fortnightly.Toolbar.Title" parent="TextAppearance.Fortnightly.Headline4">
+        <item name="fontFamily">@font/old_london</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <!-- TabLayout TextAppearance -->
+    <style name="TextAppearance.Fortnightly.TabLayout" parent="TextAppearance.Fortnightly.Body2">
+        <item name="android:textSize">@dimen/toolbar_text_size</item>
+    </style>
+
+    <!-- Source and Publish data TextAppearance -->
+    <style name="TextAppearance.Fortnightly.Subtitles" parent="TextAppearance.Fortnightly.Subtitle1">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <!-- Search input TextAppearance -->
+    <style name="TextAppearance.Fortnightly.SearchInput" parent="TextAppearance.Fortnightly.Headline5">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <!-- Search button TextAppearance -->
+    <style name="TextAppearance.Fortnightly.SearchButton" parent="TextAppearance.Fortnightly.Button">
+        <item name="android:textSize">@dimen/text_size_extra_small</item>
+    </style>
+
+    <!-- Article details Title TextAppearance -->
+    <style name="TextAppearance.Fortnightly.DetailsTitle" parent="TextAppearance.Fortnightly.Headline5">
+        <item name="fontFamily">@font/merriweather_black_italic</item>
+        <item name="android:fontFamily">@font/merriweather_black_italic</item>
+    </style>
+
+    <!-- Article details Article content TextAppearance -->
+    <style name="TextAppearance.Fortnightly.Content" parent="TextAppearance.Fortnightly.Caption">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+</resources>
