@@ -1,8 +1,11 @@
 package com.example.fortnightly.data
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "news_articles")
 data class NewsArticle(
     val title: String,
@@ -14,4 +17,4 @@ data class NewsArticle(
     val publishedAt: String,
     val updateAt: Long,
     val urlToImage: String
-)
+) : Parcelable

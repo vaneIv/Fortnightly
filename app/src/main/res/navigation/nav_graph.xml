@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/viewPagerFragment">
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.fortnightly.ui.viewpager.ViewPagerFragment"
+        android:label="ViewPagerFragment">
+        <action
+            android:id="@+id/navigatePagerFragmentToDetailsDetailsFragment"
+            app:destination="@id/articleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.example.fortnightly.ui.details.ArticleDetailsFragment"
+        android:label="ArticleDetailsFragment">
+        <argument
+            android:name="newsArticle"
+            app:argType="com.example.fortnightly.data.NewsArticle" />
+    </fragment>
+</navigation>
