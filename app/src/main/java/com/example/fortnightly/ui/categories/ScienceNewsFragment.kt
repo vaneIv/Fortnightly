@@ -8,46 +8,40 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fortnightly.R
+import com.example.fortnightly.data.NewsArticle
 import com.example.fortnightly.databinding.FragmentScienceNewsBinding
 import com.example.fortnightly.ui.NewsArticlesViewModel
 import com.example.fortnightly.ui.shared.NewsArticleAdapter
+import com.example.fortnightly.ui.viewpager.ViewPagerFragmentDirections
 import com.example.fortnightly.utils.Resource
 import com.example.fortnightly.utils.addDividerDecoration
 import com.example.fortnightly.utils.exhaustive
-import com.example.fortnightly.utils.navigateToDetailsFragment
 import com.example.fortnightly.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ScienceNewsFragment : Fragment(R.layout.fragment_science_news) {
+class ScienceNewsFragment : Fragment(R.layout.fragment_science_news),
+    NewsArticleAdapter.ArticleAdapterListener {
 
     private val viewModel: NewsArticlesViewModel by viewModels()
 
-    private var _binding: FragmentScienceNewsBinding? = null
-    private val binding
-        get() = _binding!!
+    private val newsArticleAdapter = NewsArticleAdapter(this)
 
     private val category = "science"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentScienceNewsBinding.bind(view)
-
-        val newsArticleAdapter = NewsArticleAdapter(
-            onItemClick = { newsArticle ->
-                findNavController().navigateToDetailsFragment(newsArticle)
-            }
-        )
+        val binding = FragmentScienceNewsBinding.bind(view)
 
         binding.apply {
             recyclerViewScienceNews.apply {
                 adapter = newsArticleAdapter
-                layoutManager = LinearLayoutManager(requireContext())
+                // layoutManager = LinearLayoutManager(requireContext())
                 setHasFixedSize(true)
                 addDividerDecoration(R.drawable.divider_horizontal)
             }
@@ -110,8 +104,12 @@ class ScienceNewsFragment : Fragment(R.layout.fragment_science_news) {
         viewModel.onStart(category)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onArticleClicked(view: View, article: NewsArticle) {
+        val articleDetailsTransitionName = getString(R.string.article_details_transition_name)
+        val extras = FragmentNavigatorExtras(view to articleDetailsTransitionName)
+
+        val directions =
+            ViewPagerFragmentDirections.navigatePagerFragmentToDetailsFragment(article.url)
+        findNavController().navigate(directions, extras)
     }
 }

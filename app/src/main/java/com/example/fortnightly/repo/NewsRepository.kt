@@ -79,6 +79,7 @@ class NewsRepository @Inject constructor(
             }
         )
 
+    fun getArticle(articleUrl: String) = fortnightlyDao.getArticle(articleUrl)
     suspend fun deleteArticlesOlderThen(timestampInMillis: Long) {
         fortnightlyDao.deleteNewsArticlesOlderThen(timestampInMillis)
     }

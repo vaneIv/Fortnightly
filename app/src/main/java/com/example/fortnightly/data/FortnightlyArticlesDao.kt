@@ -12,6 +12,9 @@ interface FortnightlyArticlesDao {
     @Query("SELECT * FROM articles_category INNER JOIN news_articles ON articleUrl = url WHERE articleCategory= :category")
     fun getArticlesCategory(category: String): Flow<List<NewsArticle>>
 
+    @Query("SELECT * FROM news_articles WHERE url = :articleUrl")
+    fun getArticle(articleUrl: String): Flow<NewsArticle>
+
     // This query is used only for testing purposes.
     @Query("SELECT * FROM news_articles")
     fun getNewsArticles(): Flow<List<NewsArticle>>

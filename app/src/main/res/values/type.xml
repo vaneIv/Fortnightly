@@ -49,7 +49,7 @@
         <item name="android:fontFamily">@font/libre_franklin</item>
     </style>
 
-    <style name="TextAppearance.Fortnightly.Caption." parent="TextAppearance.MaterialComponents.Caption">
+    <style name="TextAppearance.Fortnightly.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/merriweather_regular_italic</item>
         <item name="android:fontFamily">@font/merriweather_regular_italic</item>
     </style>
@@ -59,7 +59,7 @@
         <item name="android:fontFamily">@font/libre_franklin_bold</item>
     </style>
 
-    <style name="TextAppearance.Fortnightly.Caption" parent="TextAppearance.MaterialComponents.Caption">
+    <style name="TextAppearance.Fortnightly.Caption.Black" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/merriweather_black_italic</item>
         <item name="android:fontFamily">@font/merriweather_black_italic</item>
     </style>
@@ -81,7 +81,7 @@
 
     <!-- Source and Publish data TextAppearance -->
     <style name="TextAppearance.Fortnightly.Subtitles" parent="TextAppearance.Fortnightly.Subtitle1">
-        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
     <!-- Search input TextAppearance -->
@@ -103,5 +103,12 @@
     <!-- Article details Article content TextAppearance -->
     <style name="TextAppearance.Fortnightly.Content" parent="TextAppearance.Fortnightly.Caption">
         <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <!-- Article list item source name TextAppearance -->
+    <style name="TextAppearance.Fortnightly.Source" parent="TextAppearance.Fortnightly.Headline5">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_size_extra_small</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

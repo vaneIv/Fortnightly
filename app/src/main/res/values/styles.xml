@@ -5,9 +5,9 @@
 
     <!-- Toolbar style -->
     <style name="Widget.Fortnightly.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:theme">@style/Theme.Fortnightly</item>
-        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Light</item>
-        <item name="titleTextAppearance">?attr/titleTextAppearance</item>
+        <item name="android:textColorSecondary">@color/colorOnPrimary</item>
+        <item name="actionMenuTextColor">@color/colorOnPrimary</item>
+        <item name="android:actionMenuTextColor">@color/colorOnPrimary</item>
     </style>
 
     <!-- TabItem style -->

@@ -3,12 +3,8 @@ package com.example.fortnightly.utils
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fortnightly.R
-import com.example.fortnightly.data.NewsArticle
-import com.example.fortnightly.ui.viewpager.ViewPagerFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 
 val <T> T.exhaustive: T
@@ -31,9 +27,4 @@ fun RecyclerView.addDividerDecoration(
         dividerItemDecoration.setDrawable(it)
         addItemDecoration(dividerItemDecoration)
     }
-}
-
-fun NavController.navigateToDetailsFragment(newsArticle: NewsArticle) {
-    if (currentDestination?.id != R.id.viewPagerFragment) return
-    navigate(ViewPagerFragmentDirections.navigatePagerFragmentToDetailsDetailsFragment(newsArticle))
 }

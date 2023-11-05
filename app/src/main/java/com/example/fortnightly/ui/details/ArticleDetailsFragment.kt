@@ -1,42 +1,61 @@
 package com.example.fortnightly.ui.details
 
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.fortnightly.R
 import com.example.fortnightly.databinding.FragmentArticleDetailsBinding
+import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ArticleDetailsFragment : Fragment(R.layout.fragment_article_details) {
 
-    private var _binding: FragmentArticleDetailsBinding? = null
-    private val binding
-        get() = _binding!!
+    private val viewModel: ArticleDetailsViewModel by viewModels()
 
     private val args: ArticleDetailsFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            duration = 300L
+            scrimColor = Color.TRANSPARENT
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentArticleDetailsBinding.bind(view)
+        val binding = FragmentArticleDetailsBinding.bind(view)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.apply {
-            Glide.with(view)
-                .load(args.newsArticle.urlToImage)
-                .error(R.drawable.image_placeholder)
-                .into(imageViewArticle)
+        binding.toolbar.setNavigationOnClickListener {
+            it.findNavController().navigateUp()
+        }
 
-            textViewSource.text = args.newsArticle.source
-            textViewTitle.text = args.newsArticle.title
-            textViewContent.text = args.newsArticle.content
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_open_in_browser -> {
+                    openArticleUrl(args.articleUrl)
+                    true
+                }
+
+                else -> false
+            }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun openArticleUrl(articleUrl: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(articleUrl))
+        startActivity(intent)
     }
 }

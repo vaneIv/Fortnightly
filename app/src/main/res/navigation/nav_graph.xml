@@ -9,15 +9,17 @@
         android:name="com.example.fortnightly.ui.viewpager.ViewPagerFragment"
         android:label="ViewPagerFragment">
         <action
-            android:id="@+id/navigatePagerFragmentToDetailsDetailsFragment"
+            android:id="@+id/navigatePagerFragmentToDetailsFragment"
             app:destination="@id/articleDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/articleDetailsFragment"
         android:name="com.example.fortnightly.ui.details.ArticleDetailsFragment"
         android:label="ArticleDetailsFragment">
         <argument
-            android:name="newsArticle"
-            app:argType="com.example.fortnightly.data.NewsArticle" />
+            android:name="articleUrl"
+            app:argType="string" />
     </fragment>
+
 </navigation>
