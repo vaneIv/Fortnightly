@@ -1,5 +1,6 @@
 package com.example.fortnightly.data
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -19,6 +20,15 @@ interface FortnightlyArticlesDao {
     @Query("SELECT * FROM news_articles")
     fun getNewsArticles(): Flow<List<NewsArticle>>
 
+    @Query("SELECT * FROM search_result INNER JOIN news_articles ON articleUrl = url WHERE searchQuery = :query ORDER BY queryPosition")
+    fun getSearchResultArticlesPaged(query: String): PagingSource<Int, NewsArticle>
+
+    @Query("SELECT MAX(queryPosition) FROM search_result WHERE searchQuery = :searchQuery")
+    suspend fun getLastQueryPosition(searchQuery: String): Int?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSearchResults(searchResults: List<SearchResult>)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNewsArticles(newsArticles: List<NewsArticle>)
 
@@ -30,6 +40,9 @@ interface FortnightlyArticlesDao {
 
     @Query("DELETE FROM articles_category WHERE articleCategory = :category")
     suspend fun deleteArticlesCategory(category: String)
+
+    @Query("DELETE FROM search_result WHERE searchQuery = :query")
+    suspend fun deleteSearchResultsForQuery(query: String)
 
     @Query("DELETE FROM news_articles WHERE updateAt < :timestampInMillis")
     suspend fun deleteNewsArticlesOlderThen(timestampInMillis: Long)

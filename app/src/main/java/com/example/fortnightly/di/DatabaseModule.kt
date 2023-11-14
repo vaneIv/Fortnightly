@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.fortnightly.data.FortnightlyArticlesDao
 import com.example.fortnightly.data.FortnightlyArticlesDatabase
+import com.example.fortnightly.data.SearchQueryRemoteDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,13 @@ object DatabaseModule {
             .fallbackToDestructiveMigration()
             .build()
 
+    @Provides
+    @Singleton
     fun provideFortnightlyArticlesDao(database: FortnightlyArticlesDatabase): FortnightlyArticlesDao =
         database.fortnightlyArticlesDao()
+
+    @Provides
+    @Singleton
+    fun provideSearchQueryRemoteKeyDao(database: FortnightlyArticlesDatabase): SearchQueryRemoteDao =
+        database.searchQueryRemoteKeyDao()
 }

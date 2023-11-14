@@ -1,11 +1,16 @@
 package com.example.fortnightly.repo
 
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.room.withTransaction
 import com.example.fortnightly.api.ApiService
 import com.example.fortnightly.api.asDomainArticle
 import com.example.fortnightly.data.ArticlesCategory
 import com.example.fortnightly.data.FortnightlyArticlesDatabase
 import com.example.fortnightly.data.NewsArticle
+import com.example.fortnightly.data.SearchNewsRemoteMediator
 import com.example.fortnightly.utils.Resource
 import com.example.fortnightly.utils.TimeUtil
 import com.example.fortnightly.utils.networkBoundResource
@@ -79,7 +84,22 @@ class NewsRepository @Inject constructor(
             }
         )
 
+    @OptIn(ExperimentalPagingApi::class)
+    fun getSearchResultPaged(query: String, refreshOnInit: Boolean): Flow<PagingData<NewsArticle>> =
+        Pager(
+            config = PagingConfig(pageSize = 20, maxSize = 100),
+            remoteMediator = SearchNewsRemoteMediator(
+                query,
+                apiService,
+                fortnightlyDb,
+                refreshOnInit,
+                timeUtil
+            ),
+            pagingSourceFactory = { fortnightlyDao.getSearchResultArticlesPaged(query) }
+        ).flow
+
     fun getArticle(articleUrl: String) = fortnightlyDao.getArticle(articleUrl)
+
     suspend fun deleteArticlesOlderThen(timestampInMillis: Long) {
         fortnightlyDao.deleteNewsArticlesOlderThen(timestampInMillis)
     }

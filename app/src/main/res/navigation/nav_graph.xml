@@ -11,6 +11,9 @@
         <action
             android:id="@+id/navigatePagerFragmentToDetailsFragment"
             app:destination="@id/articleDetailsFragment" />
+        <action
+            android:id="@+id/navigatePagerFragmentToSearchArticlesFragment"
+            app:destination="@id/searchArticlesFragment" />
     </fragment>
 
     <fragment
@@ -20,6 +23,18 @@
         <argument
             android:name="articleUrl"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchArticlesFragment"
+        android:name="com.example.fortnightly.ui.search.SearchArticlesFragment"
+        android:label="SearchArticlesFragment">
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <action
+            android:id="@+id/navigateSearchArticlesFragmentToArticleDetailsFragment"
+            app:destination="@id/articleDetailsFragment" />
     </fragment>
 
 </navigation>

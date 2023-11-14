@@ -3,7 +3,7 @@ package com.example.fortnightly.data
 import androidx.room.Entity
 
 @Entity(
-    tableName = "search_results",
+    tableName = "search_result",
     primaryKeys = ["searchQuery", "articleUrl"]
 )
 data class SearchResult(

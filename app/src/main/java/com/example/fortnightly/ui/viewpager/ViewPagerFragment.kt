@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.fortnightly.R
 import com.example.fortnightly.databinding.FragmentViewPagerBinding
+import com.example.fortnightly.utils.onQueryTextSubmit
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +36,22 @@ class ViewPagerFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
+
+        binding.toolbar.inflateMenu(R.menu.menu_search_article)
+
+        val searchItem = binding.toolbar.menu.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+
+        searchView.onQueryTextSubmit { query ->
+
+            findNavController().navigate(
+                ViewPagerFragmentDirections.navigatePagerFragmentToSearchArticlesFragment(query)
+            )
+
+            searchView.clearFocus()
+
+            searchItem.collapseActionView()
+        }
 
         return binding.root
     }

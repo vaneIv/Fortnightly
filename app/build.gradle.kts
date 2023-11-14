@@ -87,6 +87,7 @@ dependencies {
 
     // Room
     implementation(Libs.roomRuntime)
+    implementation(Libs.roomPaging)
     kapt(Libs.roomCompiler)
 
     // Kotlin extensions and coroutines support for room.

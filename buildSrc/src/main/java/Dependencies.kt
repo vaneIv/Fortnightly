@@ -66,6 +66,7 @@ object Libs {
     // Room
     val roomRuntime =  "androidx.room:room-runtime:${Versions.roomVersion}"
     val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    val roomPaging = "androidx.room:room-paging:${Versions.roomVersion}"
 
     // Kotlin Extensions and Coroutines support for Room
     val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"

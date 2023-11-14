@@ -1,6 +1,7 @@
 package com.example.fortnightly.utils
 
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -27,4 +28,28 @@ fun RecyclerView.addDividerDecoration(
         dividerItemDecoration.setDrawable(it)
         addItemDecoration(dividerItemDecoration)
     }
+}
+
+inline fun <T : View> T.showIfOrInvisible(condition: (T) -> Boolean) {
+    if (condition(this)) {
+        this.visibility = View.VISIBLE
+    } else {
+        this.visibility = View.INVISIBLE
+    }
+}
+
+inline fun SearchView.onQueryTextSubmit(crossinline listener: (String) -> Unit) {
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            if (!query.isNullOrBlank()) {
+                listener(query)
+            }
+
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+            return true
+        }
+    })
 }

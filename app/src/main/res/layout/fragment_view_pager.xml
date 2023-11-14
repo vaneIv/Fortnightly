@@ -5,19 +5,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.Fortnightly.AppBarOverlay">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:theme="@style/Widget.Fortnightly.Toolbar">
 
                 <ImageView
                     android:id="@+id/image_view_sandwich_menu"
@@ -31,18 +30,19 @@
                     android:id="@+id/text_view_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_marginStart="@dimen/spacing_normal"
                     android:text="@string/appbar_title"
-                    android:textAppearance="?attr/titleTextAppearance" />
+                    android:textAppearance="@style/TextAppearance.Fortnightly.Toolbar.Title" />
 
-                <ImageView
-                    android:id="@+id/image_view_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="@dimen/spacing_normal"
-                    android:src="@drawable/ic_search_24"
-                    app:tint="@color/colorSecondary" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/image_view_search"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="end"-->
+<!--                    android:layout_marginEnd="@dimen/spacing_normal"-->
+<!--                    android:src="@drawable/ic_search_24"-->
+<!--                    app:tint="@color/colorSecondary" />-->
 
             </com.google.android.material.appbar.MaterialToolbar>
 

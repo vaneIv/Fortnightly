@@ -8,6 +8,7 @@ data class NewsArticleDto(
     val content: String?,
     val description: String?,
     val source: Source,
+    val category: String?,
     val publishedAt: String?,
     val urlToImage: String?
 )
@@ -20,6 +21,19 @@ fun NewsArticleDto.asDomainArticle(category: String, currentTimeInMillis: Long) 
         description = description ?: "",
         source = source.name ?: "",
         category = category,
+        publishedAt = publishedAt ?: "",
+        urlToImage = urlToImage ?: "",
+        updateAt = currentTimeInMillis
+    )
+
+fun NewsArticleDto.asDomainSearchArticle(currentTimeInMillis: Long) =
+    NewsArticle(
+        title = title ?: "",
+        url = url ?: "",
+        content = content ?: "",
+        description = description ?: "",
+        source = source.name ?: "",
+        category = category ?: "",
         publishedAt = publishedAt ?: "",
         urlToImage = urlToImage ?: "",
         updateAt = currentTimeInMillis

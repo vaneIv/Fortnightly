@@ -19,7 +19,7 @@ interface ApiService {
     @Headers("X-Api-Key: $API_KEY")
     @GET("everything")
     suspend fun searchNews(
-        @Query("query") query: String,
+        @Query("q") query: String,
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): NewsResponse
