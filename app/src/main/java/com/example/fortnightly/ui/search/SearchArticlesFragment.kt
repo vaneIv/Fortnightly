@@ -1,11 +1,8 @@
 package com.example.fortnightly.ui.search
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,12 +19,13 @@ import com.example.fortnightly.databinding.FragmentSearchArticlesBinding
 import com.example.fortnightly.ui.shared.NewsArticleAdapter
 import com.example.fortnightly.utils.addDividerDecoration
 import com.example.fortnightly.utils.onQueryTextSubmit
+import com.example.fortnightly.utils.postponeAndStartEnterTransition
+import com.example.fortnightly.utils.setMaterialFadeThroughTransition
 import com.example.fortnightly.utils.showIfOrInvisible
 import com.example.fortnightly.utils.showSnackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
@@ -42,11 +40,19 @@ class SearchArticlesFragment : Fragment(R.layout.fragment_search_articles),
 
     private lateinit var newsArticlePagingAdapter: NewsArticlePagingAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setMaterialFadeThroughTransition()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        postponeEnterTransition(1000, TimeUnit.MILLISECONDS)
-        view.doOnPreDraw { startPostponedEnterTransition() }
+        postponeAndStartEnterTransition(view)
+
+//        postponeEnterTransition(1000, TimeUnit.MILLISECONDS)
+//        view.doOnPreDraw { startPostponedEnterTransition() }
 
         val binding = FragmentSearchArticlesBinding.bind(view)
 

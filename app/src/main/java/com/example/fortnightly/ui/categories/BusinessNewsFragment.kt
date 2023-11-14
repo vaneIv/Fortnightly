@@ -19,6 +19,7 @@ import com.example.fortnightly.ui.viewpager.ViewPagerFragmentDirections
 import com.example.fortnightly.utils.Resource
 import com.example.fortnightly.utils.addDividerDecoration
 import com.example.fortnightly.utils.exhaustive
+import com.example.fortnightly.utils.setMaterialElevationTransitions
 import com.example.fortnightly.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -41,7 +42,6 @@ class BusinessNewsFragment : Fragment(R.layout.fragment_business_news),
         binding.apply {
             recyclerViewBusinessNews.apply {
                 adapter = newsArticleAdapter
-                // layoutManager = LinearLayoutManager(requireContext())
                 setHasFixedSize(true)
                 addDividerDecoration(R.drawable.divider_horizontal)
             }
@@ -105,6 +105,9 @@ class BusinessNewsFragment : Fragment(R.layout.fragment_business_news),
     }
 
     override fun onArticleClicked(view: View, article: NewsArticle) {
+
+        setMaterialElevationTransitions(R.integer.motion_duration_large)
+
         val articleDetailsTransitionName = getString(R.string.article_details_transition_name)
         val extras = FragmentNavigatorExtras(view to articleDetailsTransitionName)
 

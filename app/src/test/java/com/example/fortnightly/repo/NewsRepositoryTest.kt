@@ -73,7 +73,6 @@ class NewsRepositoryTest {
         "general",
         1
     )
-    private val categoryArticles = listOf(generalCategoryArticle)
 
     private val newsResponse = NewsResponse(
         listOf(
@@ -83,6 +82,7 @@ class NewsRepositoryTest {
                 "content",
                 "description",
                 Source(null, "nbc"),
+                "category",
                 "publishedAt",
                 "urlToImage"
             )

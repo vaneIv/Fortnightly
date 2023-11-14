@@ -45,7 +45,7 @@ class NewsArticlesViewModelTest {
         "content",
         "description",
         "nbc",
-        "general",
+        "category",
         "publishedAt",
         1,
         "urlToImage"

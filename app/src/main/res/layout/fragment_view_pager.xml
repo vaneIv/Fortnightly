@@ -35,15 +35,6 @@
                     android:text="@string/appbar_title"
                     android:textAppearance="@style/TextAppearance.Fortnightly.Toolbar.Title" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/image_view_search"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="end"-->
-<!--                    android:layout_marginEnd="@dimen/spacing_normal"-->
-<!--                    android:src="@drawable/ic_search_24"-->
-<!--                    app:tint="@color/colorSecondary" />-->
-
             </com.google.android.material.appbar.MaterialToolbar>
 
             <com.google.android.material.tabs.TabLayout
