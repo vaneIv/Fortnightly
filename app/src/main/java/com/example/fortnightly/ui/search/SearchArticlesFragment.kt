@@ -20,17 +20,16 @@ import com.example.fortnightly.ui.shared.NewsArticleAdapter
 import com.example.fortnightly.utils.addDividerDecoration
 import com.example.fortnightly.utils.onQueryTextSubmit
 import com.example.fortnightly.utils.postponeAndStartEnterTransition
+import com.example.fortnightly.utils.setMaterialElevationTransitions
 import com.example.fortnightly.utils.setMaterialFadeThroughTransition
 import com.example.fortnightly.utils.showIfOrInvisible
 import com.example.fortnightly.utils.showSnackbar
 import com.google.android.material.transition.MaterialElevationScale
-import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class SearchArticlesFragment : Fragment(R.layout.fragment_search_articles),
@@ -51,8 +50,9 @@ class SearchArticlesFragment : Fragment(R.layout.fragment_search_articles),
 
         postponeAndStartEnterTransition(view)
 
-//        postponeEnterTransition(1000, TimeUnit.MILLISECONDS)
-//        view.doOnPreDraw { startPostponedEnterTransition() }
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
 
         val binding = FragmentSearchArticlesBinding.bind(view)
 
@@ -65,7 +65,7 @@ class SearchArticlesFragment : Fragment(R.layout.fragment_search_articles),
 
         searchView.onQueryTextSubmit { query ->
             viewModel.onSearchQuerySubmit(query)
-            searchView.clearFocus()
+            //searchView.clearFocus()
         }
 
         binding.apply {
@@ -197,12 +197,7 @@ class SearchArticlesFragment : Fragment(R.layout.fragment_search_articles),
 
     override fun onArticleClicked(view: View, article: NewsArticle) {
 
-        exitTransition = MaterialElevationScale(false).apply {
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
-        }
-        reenterTransition = MaterialElevationScale(true).apply {
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
-        }
+        setMaterialElevationTransitions(R.integer.motion_duration_large)
 
         val articleDetailsTransitionName = getString(R.string.article_details_transition_name)
         val extras = FragmentNavigatorExtras(view to articleDetailsTransitionName)

@@ -11,8 +11,10 @@ import com.example.fortnightly.R
 import com.example.fortnightly.databinding.FragmentViewPagerBinding
 import com.example.fortnightly.utils.onQueryTextSubmit
 import com.example.fortnightly.utils.postponeAndStartEnterTransition
+import com.example.fortnightly.utils.setMaterialElevationTransitions
 import com.example.fortnightly.utils.setMaterialFadeThroughTransition
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,7 +56,7 @@ class ViewPagerFragment : Fragment() {
                 ViewPagerFragmentDirections.navigatePagerFragmentToSearchArticlesFragment(query)
             )
 
-            searchView.clearFocus()
+            //searchView.clearFocus()
 
             searchItem.collapseActionView()
         }
@@ -66,6 +68,8 @@ class ViewPagerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         postponeAndStartEnterTransition(view)
+
+        setMaterialElevationTransitions(R.integer.motion_duration_large)
     }
 
     private fun getTabTitle(position: Int): String? {

@@ -19,6 +19,7 @@
         android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:onClick="@{(view) -> listener.onArticleClicked(view, article)}"
         android:transitionName="@{@string/article_transition_name(article.url)}">
 

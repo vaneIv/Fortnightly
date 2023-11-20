@@ -75,7 +75,7 @@ fun Fragment.setMaterialFadeThroughTransition() {
 }
 
 fun Fragment.setMaterialElevationTransitions(durationResId: Int) {
-    parentFragment?.exitTransition = createMaterialElevationScale(false, durationResId)
+    exitTransition = createMaterialElevationScale(false, durationResId)
     reenterTransition = createMaterialElevationScale(true, durationResId)
 }
 
